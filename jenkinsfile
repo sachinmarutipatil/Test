@@ -1,7 +1,4 @@
 pipeline {
-   def tomcatWeb = '/opt/tomcat/webapps'
-   def tomcatBin = '/opt/tomcat/bin'
-   def tomcatStatus = ''
    agent any
    tools {
       maven 'maven'
@@ -22,8 +19,8 @@ pipeline {
    }
    stage('Deploy') {
      steps{
-        sh 'copy target/webapp.war ${tomcatWeb}/webapp.war'
-        sh "${tomcatBin}/startup.bat"  
+        sh 'copy target/webapp.war  /opt/tomcat/webapps/webapp.war'
+        sh '/opt/tomcat/bin/startup.bat'
        }
       
     }
