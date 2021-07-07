@@ -19,7 +19,7 @@ pipeline {
    }
    stage('Deploy') {
      steps{
-        sh 'copy target/webapp.war  /opt/tomcat/webapps/webapp.war'
+        sh 'cp target/webapp.war  /opt/tomcat/webapps/webapp.war'
         sh '/opt/tomcat/bin/startup.bat'
        }
       
