@@ -1,4 +1,7 @@
 pipeline {
+   def tomcatWeb = '/opt/tomcat/webapps'
+   def tomcatBin = '/opt/tomcat/bin'
+   def tomcatStatus = ''
    agent any
    tools {
       maven 'maven'
@@ -19,10 +22,16 @@ pipeline {
    }
    stage('Deploy') {
      steps {
-       sshagent(['jenkins_master_private_key']) {
-                 sh "scp -o StrictHostKeyChecking=no jenkins@192.168.43.234:/home/jenkins/workspace/T4/webapp/target/webapp.war /opt/tomcat/webapps"
-       }    
+        bat "copy target/webapp.war "${tomcatWeb} /webapp.war""
+       }
+        	   
    }
+   stage ('Start Tomcat Server') {
+         sleep(time:5,unit:"SECONDS") 
+         bat "${tomcatBin}\\startup.bat"
+         sleep(time:100,unit:"SECONDS")
+   }
+        
   }
 }
 }
