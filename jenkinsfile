@@ -22,7 +22,7 @@ pipeline {
    }
    stage('Deploy') {
      steps {
-        bat "copy target/webapp.war "${tomcatWeb} /webapp.war""
+        bat "copy target/webapp.war "${tomcatWeb}/webapp.war""
        }
         	   
    }
