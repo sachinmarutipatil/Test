@@ -20,7 +20,7 @@ pipeline {
    stage('Deploy') {
      steps {
        sshagent(['jenkins_master_private_key']) {
-                 sh "scp -o StrictHostKeyChecking=no jenkins@192.168.43.234:/home/jenkins/workspace/T4/webapp/target/webapp.war tomcat@192.168.43.234:/opt/tomcat/webapps"
+                 sh "scp -o StrictHostKeyChecking=no jenkins@192.168.43.234:/home/jenkins/workspace/T4/webapp/target/webapp.war /opt/tomcat/webapps"
        }    
    }
   }
