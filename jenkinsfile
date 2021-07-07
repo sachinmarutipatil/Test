@@ -21,15 +21,12 @@ pipeline {
      }
    }
    stage('Deploy') {
-     steps {
+     steps{
         sh 'copy target/webapp.war ${tomcatWeb}/webapp.war'
+        sh "${tomcatBin}/startup.bat"  
        }
-        	   
-   }
-   stage ('Start Tomcat Server') { 
-         sh "${tomcatBin}/startup.bat"
-         
-   }
+      
+    }
         
   }
 }
