@@ -19,7 +19,7 @@ pipeline {
    }
    stage('Deploy') {
      steps{
-        sh 'cp -R /home/jenkins/workspace/T4/webapp/target/webapp.war  /opt/tomcat/webapps/examples'
+        sh 'cp -R /home/jenkins/workspace/T4/webapp/target/webapp.war  /opt/tomcat/webapps'
        }
       
     }
